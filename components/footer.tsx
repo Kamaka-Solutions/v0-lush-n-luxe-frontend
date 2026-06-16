@@ -64,7 +64,7 @@ export function Footer() {
                 alt="Lush n' Luxe Home & Textiles"
                 width={1536}
                 height={1024}
-                className="h-24 w-auto"
+                className="h-30 w-auto"
               />
             </Link>
             <p className="mt-2 text-sm italic text-accent">
