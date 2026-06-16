@@ -240,12 +240,12 @@ function FeaturedCarousel() {
         </AnimatedSection>
 
         <div className="relative mt-16">
-          {/* Flank arrows — vertically centered on the image row */}
+          {/* Flank arrows — sit in the side gutters, outside the cards */}
           <button
             type="button"
             onClick={() => scroll("left")}
             aria-label="Scroll collections left"
-            className="absolute -left-4 top-28 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex lg:-left-6"
+            className="absolute left-0 top-28 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -253,14 +253,14 @@ function FeaturedCarousel() {
             type="button"
             onClick={() => scroll("right")}
             aria-label="Scroll collections right"
-            className="absolute -right-4 top-28 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex lg:-right-6"
+            className="absolute right-0 top-28 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
 
           <div
             ref={scrollRef}
-            className="-mx-6 overflow-x-auto px-6 hide-scrollbar scroll-smooth"
+            className="-mx-6 overflow-x-auto px-6 hide-scrollbar scroll-smooth sm:mx-0 sm:px-16"
           >
             <div className="flex gap-6" style={{ minWidth: "max-content" }}>
               {CAROUSEL_COLLECTIONS.map((item, i) => (
