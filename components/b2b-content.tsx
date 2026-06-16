@@ -44,7 +44,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 function B2BHero() {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden bg-foreground py-32 lg:py-40">
+    <section className="relative flex items-center justify-center overflow-hidden bg-foreground pb-24 pt-48 lg:pb-32 lg:pt-56">
       <Image
         src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1920&q=80"
         alt="Professional hotel interior"
@@ -211,7 +211,7 @@ function TrustStrip() {
   );
 }
 
-/* ──────────────────── Page Export ──────────────────── */
+/* ─────��────────────── Page Export ──────────────────── */
 
 export default function B2BContent() {
   return (

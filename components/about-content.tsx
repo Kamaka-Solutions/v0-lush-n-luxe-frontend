@@ -14,7 +14,7 @@ import { Leaf, Recycle, Heart, ShieldCheck, Check } from "lucide-react";
 
 function AboutHero() {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden py-32 lg:py-40">
+    <section className="relative flex items-center justify-center overflow-hidden pb-24 pt-48 lg:pb-32 lg:pt-56">
       <Image
         src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=1920&q=80"
         alt="Elegant interior design"

@@ -72,7 +72,7 @@ export const CAROUSEL_COLLECTIONS = [
     description:
       "Zero-twist Egyptian cotton towels with unmatched absorbency and cloud-like softness.",
     image:
-      "https://images.unsplash.com/photo-1600369671738-fa6e2a392bf4?w=800&q=80",
+      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80",
   },
   {
     title: "Hospitality Essentials",
