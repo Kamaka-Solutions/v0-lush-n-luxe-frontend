@@ -32,7 +32,7 @@ export function Navbar() {
           : "bg-background/80 backdrop-blur-sm"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0" aria-label="Lush n' Luxe Home & Textiles">
           <Image
@@ -41,7 +41,7 @@ export function Navbar() {
             width={1536}
             height={1024}
             priority
-            className="h-12 w-auto lg:h-14"
+            className="h-20 w-auto lg:h-24"
           />
         </Link>
 
