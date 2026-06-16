@@ -239,28 +239,21 @@ function FeaturedCarousel() {
           />
         </AnimatedSection>
 
-        <div className="relative mt-16">
-          {/* Flank arrows — sit in the side gutters, outside the cards */}
+        <div className="mt-16 flex items-center gap-2 sm:gap-4">
+          {/* Left arrow — own column, outside the scroll track */}
           <button
             type="button"
             onClick={() => scroll("left")}
             aria-label="Scroll collections left"
-            className="absolute left-0 top-28 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex"
+            className="hidden h-12 w-12 flex-shrink-0 items-center justify-center self-start rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex"
+            style={{ marginTop: "5.5rem" }}
           >
             <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scroll("right")}
-            aria-label="Scroll collections right"
-            className="absolute right-0 top-28 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex"
-          >
-            <ChevronRight className="h-5 w-5" />
           </button>
 
           <div
             ref={scrollRef}
-            className="-mx-6 overflow-x-auto px-6 hide-scrollbar scroll-smooth sm:mx-0 sm:px-16"
+            className="-mx-6 flex-1 overflow-x-auto px-6 hide-scrollbar scroll-smooth sm:mx-0 sm:px-0"
           >
             <div className="flex gap-6" style={{ minWidth: "max-content" }}>
               {CAROUSEL_COLLECTIONS.map((item, i) => (
@@ -292,6 +285,17 @@ function FeaturedCarousel() {
               ))}
             </div>
           </div>
+
+          {/* Right arrow — own column, outside the scroll track */}
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            aria-label="Scroll collections right"
+            className="hidden h-12 w-12 flex-shrink-0 items-center justify-center self-start rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex"
+            style={{ marginTop: "5.5rem" }}
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
 
         {/* Mobile arrows below the track */}
