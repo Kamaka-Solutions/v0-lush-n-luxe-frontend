@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FOOTER_LINKS, SOCIAL_LINKS } from "@/lib/constants";
 
 const socialLinks = [
@@ -57,10 +58,14 @@ export function Footer() {
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-8">
           {/* Brand column */}
           <div className="lg:w-1/3">
-            <Link href="/" className="inline-block">
-              <span className="font-serif text-2xl font-bold tracking-tight">
-                Lush n&apos; Luxe
-              </span>
+            <Link href="/" className="inline-block" aria-label="Lush n' Luxe Home & Textiles">
+              <Image
+                src="/logo.png"
+                alt="Lush n' Luxe Home & Textiles"
+                width={1536}
+                height={1024}
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="mt-2 text-sm italic text-accent">
               Sustainable Comfort. Elevated Living.

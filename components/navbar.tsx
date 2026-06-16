@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -33,10 +34,15 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
-          <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
-            Lush n&apos; Luxe
-          </span>
+        <Link href="/" className="flex-shrink-0" aria-label="Lush n' Luxe Home & Textiles">
+          <Image
+            src="/logo.png"
+            alt="Lush n' Luxe Home & Textiles"
+            width={1536}
+            height={1024}
+            priority
+            className="h-12 w-auto lg:h-14"
+          />
         </Link>
 
         {/* Desktop Navigation */}
