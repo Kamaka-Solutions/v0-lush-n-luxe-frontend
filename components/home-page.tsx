@@ -233,39 +233,34 @@ function FeaturedCarousel() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <AnimatedSection>
-          <div className="flex items-end justify-between gap-6">
-            <SectionHeading
-              title="Featured Collections"
-              subtitle="Hand-picked ranges designed for those who appreciate the finer things."
-            />
-            <div className="hidden flex-shrink-0 gap-3 pb-2 sm:flex">
-              <button
-                type="button"
-                onClick={() => scroll("left")}
-                aria-label="Scroll collections left"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scroll("right")}
-                aria-label="Scroll collections right"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
+          <SectionHeading
+            title="Featured Collections"
+            subtitle="Hand-picked ranges designed for those who appreciate the finer things."
+          />
         </AnimatedSection>
 
-        <div className="relative">
-          {/* Edge fade hints that there is more to scroll */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-background to-transparent" />
+        <div className="relative mt-16">
+          {/* Flank arrows — vertically centered on the image row */}
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            aria-label="Scroll collections left"
+            className="absolute -left-4 top-28 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex lg:-left-6"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            aria-label="Scroll collections right"
+            className="absolute -right-4 top-28 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex lg:-right-6"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
 
           <div
             ref={scrollRef}
-            className="mt-16 -mx-6 px-6 overflow-x-auto hide-scrollbar scroll-smooth"
+            className="-mx-6 overflow-x-auto px-6 hide-scrollbar scroll-smooth"
           >
             <div className="flex gap-6" style={{ minWidth: "max-content" }}>
               {CAROUSEL_COLLECTIONS.map((item, i) => (
