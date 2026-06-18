@@ -11,7 +11,7 @@ import { MapPin, Mail, Phone, MessageCircle, Calendar, Store } from "lucide-reac
 
 function ContactHero() {
   return (
-    <section className="bg-foreground py-32 lg:py-40">
+    <section className="bg-foreground pb-24 pt-48 lg:pb-32 lg:pt-56">
       <div className="mx-auto max-w-3xl px-6 text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}

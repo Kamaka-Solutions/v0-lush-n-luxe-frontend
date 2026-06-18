@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import {
   AnimatedSection,
@@ -15,7 +16,7 @@ import {
   CAROUSEL_COLLECTIONS,
   BRAND_PROMISES,
 } from "@/lib/constants";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ──────────────────────────── Hero ──────────────────────────── */
 
@@ -216,6 +217,18 @@ function AboutPreview() {
 /* ────────────────────── Featured Carousel ────────────────────── */
 
 function FeaturedCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8;
+    el.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -226,39 +239,83 @@ function FeaturedCarousel() {
           />
         </AnimatedSection>
 
-        <div className="mt-16 -mx-6 px-6 overflow-x-auto hide-scrollbar">
-          <div
-            className="flex gap-6"
-            style={{ minWidth: "max-content" }}
+        <div className="mt-16 flex items-center gap-2 sm:gap-4">
+          {/* Left arrow — own column, outside the scroll track */}
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            aria-label="Scroll collections left"
+            className="hidden h-12 w-12 flex-shrink-0 items-center justify-center self-start rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex"
+            style={{ marginTop: "5.5rem" }}
           >
-            {CAROUSEL_COLLECTIONS.map((item, i) => (
-              <AnimatedSection
-                key={item.title}
-                delay={i * 0.1}
-                className="w-80 flex-shrink-0"
-              >
-                <div className="group overflow-hidden rounded-lg bg-card shadow-sm transition-shadow hover:shadow-md">
-                  <div className="overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={800}
-                      height={600}
-                      className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          <div
+            ref={scrollRef}
+            className="-mx-6 flex-1 overflow-x-auto px-6 hide-scrollbar scroll-smooth sm:mx-0 sm:px-0"
+          >
+            <div className="flex gap-6" style={{ minWidth: "max-content" }}>
+              {CAROUSEL_COLLECTIONS.map((item, i) => (
+                <AnimatedSection
+                  key={item.title}
+                  delay={i * 0.1}
+                  className="w-80 flex-shrink-0"
+                >
+                  <div className="group overflow-hidden rounded-lg bg-card shadow-sm transition-shadow hover:shadow-md">
+                    <div className="overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={800}
+                        height={600}
+                        className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-serif text-lg font-semibold text-foreground">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-serif text-lg font-semibold text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
+
+          {/* Right arrow — own column, outside the scroll track */}
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            aria-label="Scroll collections right"
+            className="hidden h-12 w-12 flex-shrink-0 items-center justify-center self-start rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-primary hover:text-primary-foreground sm:flex"
+            style={{ marginTop: "5.5rem" }}
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+
+        {/* Mobile arrows below the track */}
+        <div className="mt-6 flex justify-center gap-3 sm:hidden">
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            aria-label="Scroll collections left"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            aria-label="Scroll collections right"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
       </div>
     </section>

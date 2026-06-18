@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatedSection, StaggerContainer, staggerItem } from "@/components/animated-section";
 import { SectionHeading } from "@/components/section-heading";
@@ -23,6 +24,7 @@ import {
   Shield,
   Clock,
   ThumbsUp,
+  CheckCircle2,
 } from "lucide-react";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -44,7 +46,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 function B2BHero() {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden bg-foreground py-32 lg:py-40">
+    <section className="relative flex items-center justify-center overflow-hidden bg-foreground pb-24 pt-48 lg:pb-32 lg:pt-56">
       <Image
         src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1920&q=80"
         alt="Professional hotel interior"
@@ -85,13 +87,13 @@ function B2BHero() {
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <Link
-            href="/contact"
+            href="#quote"
             className="inline-flex items-center rounded-sm bg-accent px-7 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-accent/90"
           >
             Request Corporate Account
           </Link>
           <Link
-            href="/contact"
+            href="#quote"
             className="inline-flex items-center rounded-sm border border-primary-foreground/30 px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary-foreground/10"
           >
             Request a Quotation
@@ -211,7 +213,116 @@ function TrustStrip() {
   );
 }
 
-/* ──────────────────── Page Export ──────────────────── */
+/* ��────��────────────── Page Export ──────────────────── */
+
+function QuoteRequest() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const inputClass =
+    "w-full rounded-sm border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
+
+  return (
+    <section id="quote" className="scroll-mt-40 bg-card py-24 lg:py-32">
+      <div className="mx-auto max-w-3xl px-6 lg:px-8">
+        <AnimatedSection>
+          <SectionHeading
+            title="Request a Quotation"
+            subtitle="Tell us about your requirements and our team will prepare a tailored quote within 48 hours."
+          />
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          {submitted ? (
+            <div className="mt-12 flex flex-col items-center gap-4 rounded-lg border border-border bg-background p-12 text-center">
+              <CheckCircle2 className="h-12 w-12 text-primary" />
+              <h3 className="font-serif text-2xl font-semibold text-foreground">
+                Thank you!
+              </h3>
+              <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                Your quotation request has been received. A member of our
+                business team will be in touch within 48 hours.
+              </p>
+            </div>
+          ) : (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSubmitted(true);
+              }}
+              className="mt-12 grid grid-cols-1 gap-6 rounded-lg border border-border bg-background p-8 sm:grid-cols-2 lg:p-10"
+            >
+              <div className="flex flex-col gap-2">
+                <label htmlFor="q-name" className="text-sm font-medium text-foreground">
+                  Full Name
+                </label>
+                <input id="q-name" type="text" required placeholder="Jane Doe" className={inputClass} />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="q-company" className="text-sm font-medium text-foreground">
+                  Company
+                </label>
+                <input id="q-company" type="text" required placeholder="Acme Hospitality" className={inputClass} />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="q-email" className="text-sm font-medium text-foreground">
+                  Email
+                </label>
+                <input id="q-email" type="email" required placeholder="jane@company.com" className={inputClass} />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="q-phone" className="text-sm font-medium text-foreground">
+                  Phone
+                </label>
+                <input id="q-phone" type="tel" placeholder="+1 (555) 000-0000" className={inputClass} />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="q-type" className="text-sm font-medium text-foreground">
+                  Business Type
+                </label>
+                <select id="q-type" required defaultValue="" className={inputClass}>
+                  <option value="" disabled>
+                    Select an option
+                  </option>
+                  <option>Hotel / Resort</option>
+                  <option>Boutique Stay / Airbnb</option>
+                  <option>Healthcare / Nursing Home</option>
+                  <option>Corporate Housing</option>
+                  <option>Event Organiser</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="q-quantity" className="text-sm font-medium text-foreground">
+                  Estimated Quantity
+                </label>
+                <input id="q-quantity" type="text" placeholder="e.g. 200 towel sets" className={inputClass} />
+              </div>
+              <div className="flex flex-col gap-2 sm:col-span-2">
+                <label htmlFor="q-details" className="text-sm font-medium text-foreground">
+                  Project Details
+                </label>
+                <textarea
+                  id="q-details"
+                  rows={4}
+                  placeholder="Tell us about the products you need, timelines, and any special requirements."
+                  className={inputClass}
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <button
+                  type="submit"
+                  className="w-full rounded-sm bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto"
+                >
+                  Submit Quotation Request
+                </button>
+              </div>
+            </form>
+          )}
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
 
 export default function B2BContent() {
   return (
@@ -220,6 +331,7 @@ export default function B2BContent() {
       <Partners />
       <Features />
       <TrustStrip />
+      <QuoteRequest />
     </>
   );
 }

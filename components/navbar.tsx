@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -25,18 +26,22 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/95 backdrop-blur-md shadow-sm"
-          : "bg-background/80 backdrop-blur-sm"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "bg-background/95 backdrop-blur-md shadow-sm"
+        : "bg-background/80 backdrop-blur-sm"
+        }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
-          <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
-            Lush n&apos; Luxe
-          </span>
+        <Link href="/" className="flex-shrink-0" aria-label="Lush n' Luxe Home & Textiles">
+          <Image
+            src="/logo.png"
+            alt="Lush n' Luxe Home & Textiles"
+            width={1536}
+            height={1024}
+            priority
+            className="h-32 w-auto lg:h-36"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -45,11 +50,10 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium tracking-wide transition-colors hover:text-primary ${
-                pathname === link.href
-                  ? "text-primary"
-                  : "text-muted-foreground"
-              }`}
+              className={`text-sm font-medium tracking-wide transition-colors hover:text-primary ${pathname === link.href
+                ? "text-primary"
+                : "text-muted-foreground"
+                }`}
             >
               {link.label}
             </Link>
@@ -91,11 +95,10 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-base font-medium transition-colors hover:text-primary ${
-                    pathname === link.href
-                      ? "text-primary"
-                      : "text-muted-foreground"
-                  }`}
+                  className={`text-base font-medium transition-colors hover:text-primary ${pathname === link.href
+                    ? "text-primary"
+                    : "text-muted-foreground"
+                    }`}
                 >
                   {link.label}
                 </Link>
