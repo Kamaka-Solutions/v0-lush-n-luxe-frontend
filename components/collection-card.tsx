@@ -6,6 +6,7 @@ interface CollectionCardProps {
   description: string;
   image: string;
   href: string;
+  cta?: string;
 }
 
 export function CollectionCard({
@@ -13,6 +14,7 @@ export function CollectionCard({
   description,
   image,
   href,
+  cta = "Explore Collection",
 }: CollectionCardProps) {
   return (
     <Link href={href} className="group block">
@@ -33,7 +35,7 @@ export function CollectionCard({
             {description}
           </p>
           <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors group-hover:text-accent/80">
-            Explore Collection
+            {cta}
             <svg
               className="h-4 w-4 transition-transform group-hover:translate-x-1"
               fill="none"

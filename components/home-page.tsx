@@ -16,6 +16,7 @@ import {
   CAROUSEL_COLLECTIONS,
   BRAND_PROMISES,
 } from "@/lib/constants";
+import { PHASE_1 } from "@/lib/config";
 import { Check, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ──────────────────────────── Hero ──────────────────────────── */
@@ -66,24 +67,35 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.45 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          <Link
-            href="/#collections"
-            className="inline-flex items-center rounded-sm bg-accent px-7 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-accent/90 hover:shadow-lg"
-          >
-            Shop Collection
-          </Link>
-          <Link
-            href="/b2b"
-            className="inline-flex items-center rounded-sm border border-primary-foreground/30 px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary-foreground/10"
-          >
-            Explore B2B Solutions
-          </Link>
-          <Link
-            href="/subscription"
-            className="inline-flex items-center rounded-sm border border-primary-foreground/30 px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary-foreground/10"
-          >
-            Join Linen Subscription
-          </Link>
+          {PHASE_1 ? (
+            <Link
+              href="/collections"
+              className="inline-flex items-center rounded-sm bg-accent px-8 py-4 text-sm font-semibold text-foreground transition-all hover:bg-accent/90 hover:shadow-lg"
+            >
+              Explore Our Collections
+            </Link>
+          ) : (
+            <>
+              <Link
+                href="/#collections"
+                className="inline-flex items-center rounded-sm bg-accent px-7 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-accent/90 hover:shadow-lg"
+              >
+                Shop Collection
+              </Link>
+              <Link
+                href="/b2b"
+                className="inline-flex items-center rounded-sm border border-primary-foreground/30 px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary-foreground/10"
+              >
+                Explore B2B Solutions
+              </Link>
+              <Link
+                href="/subscription"
+                className="inline-flex items-center rounded-sm border border-primary-foreground/30 px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary-foreground/10"
+              >
+                Join Linen Subscription
+              </Link>
+            </>
+          )}
         </motion.div>
       </div>
 
@@ -132,7 +144,8 @@ function FeaturedCollections() {
                 title={col.title}
                 description={col.description}
                 image={col.image}
-                href={col.href}
+                href={PHASE_1 ? col.href : "/#"}
+                cta={PHASE_1 ? "View Collection" : "Explore Collection"}
               />
             </motion.div>
           ))}

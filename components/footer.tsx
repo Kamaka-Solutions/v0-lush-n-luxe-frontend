@@ -1,6 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FOOTER_LINKS, SOCIAL_LINKS } from "@/lib/constants";
+import {
+  FOOTER_LINKS,
+  FOOTER_LINKS_PHASE_1,
+  SOCIAL_LINKS,
+} from "@/lib/constants";
+import { PHASE_1 } from "@/lib/config";
+
+const footerLinks = PHASE_1 ? FOOTER_LINKS_PHASE_1 : FOOTER_LINKS;
 
 const socialLinks = [
   {
@@ -109,8 +116,14 @@ export function Footer() {
           </div>
 
           {/* Link columns */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:w-2/3">
-            {FOOTER_LINKS.map((col) => (
+          <div
+            className={`grid gap-8 lg:w-2/3 ${
+              PHASE_1
+                ? "grid-cols-1 sm:grid-cols-2"
+                : "grid-cols-2 sm:grid-cols-4"
+            }`}
+          >
+            {footerLinks.map((col) => (
               <div key={col.title}>
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-accent">
                   {col.title}
@@ -140,26 +153,28 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Lush n&apos; Luxe. All rights
             reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <Link
-              href="/#"
-              className="text-xs text-primary-foreground/50 hover:text-primary-foreground/70"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/#"
-              className="text-xs text-primary-foreground/50 hover:text-primary-foreground/70"
-            >
-              Terms &amp; Conditions
-            </Link>
-            <Link
-              href="/#"
-              className="text-xs text-primary-foreground/50 hover:text-primary-foreground/70"
-            >
-              Cookie Preferences
-            </Link>
-          </div>
+          {!PHASE_1 && (
+            <div className="flex items-center gap-6">
+              <Link
+                href="/#"
+                className="text-xs text-primary-foreground/50 hover:text-primary-foreground/70"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/#"
+                className="text-xs text-primary-foreground/50 hover:text-primary-foreground/70"
+              >
+                Terms &amp; Conditions
+              </Link>
+              <Link
+                href="/#"
+                className="text-xs text-primary-foreground/50 hover:text-primary-foreground/70"
+              >
+                Cookie Preferences
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </footer>

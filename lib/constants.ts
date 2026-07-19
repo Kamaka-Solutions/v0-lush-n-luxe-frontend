@@ -1,10 +1,19 @@
-// Site-wide navigation links
-export const NAV_LINKS = [
+// Full navigation (Phase 2 — full experience)
+export const NAV_LINKS_FULL = [
   { label: "Home", href: "/" },
   { label: "Shop", href: "/#collections" },
   { label: "About", href: "/about" },
   { label: "B2B", href: "/b2b" },
   { label: "Subscription", href: "/subscription" },
+  { label: "Sustainability", href: "/sustainability" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+// Pre-launch navigation (Phase 1)
+export const NAV_LINKS_PHASE_1 = [
+  { label: "Home", href: "/" },
+  { label: "Collections", href: "/collections" },
+  { label: "About", href: "/about" },
   { label: "Sustainability", href: "/sustainability" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -17,7 +26,7 @@ export const FEATURED_COLLECTIONS = [
       "Luxury bed with crisp linens and throw cushions. Indulge in breathable, durable bedding crafted for both elegance and performance.",
     image:
       "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
-    href: "/#",
+    href: "/collections#home-bedroom",
     cta: "Shop Bedroom",
   },
   {
@@ -26,7 +35,7 @@ export const FEATURED_COLLECTIONS = [
       "Stack of plush towels with bathrobe on side. Ultra-absorbent, quick-dry, and designed to withstand repeated commercial laundering.",
     image:
       "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80",
-    href: "/#",
+    href: "/collections#bathroom-spa",
     cta: "Shop Bathroom",
   },
   {
@@ -35,7 +44,7 @@ export const FEATURED_COLLECTIONS = [
       "Loungewear and tote bags for the beach. Sustainable comfort for every occasion and every lifestyle.",
     image:
       "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80",
-    href: "/#",
+    href: "/collections#lifestyle-leisure",
     cta: "Shop Lifestyle",
   },
   {
@@ -44,7 +53,7 @@ export const FEATURED_COLLECTIONS = [
       "Elegant kitchen towels, aprons, and table linen on the counter. Artisan textiles for the discerning home chef.",
     image:
       "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
-    href: "/#",
+    href: "/collections#kitchenware",
     cta: "Shop Kitchenware",
   },
   {
@@ -53,8 +62,75 @@ export const FEATURED_COLLECTIONS = [
       "Wall hangings, decorative cushions, and curtains in the living space. Curated accents to elevate every room.",
     image:
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
-    href: "/#",
+    href: "/collections#decor-accessories",
     cta: "Shop Decor",
+  },
+] as const;
+
+// Detailed collections for the Phase 1 Collections page
+export const COLLECTIONS = [
+  {
+    slug: "home-bedroom",
+    title: "Home & Bedroom",
+    description:
+      "Breathable, durable bedding and soft furnishings crafted for restful nights and effortlessly elegant bedrooms.",
+    image:
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=80",
+    products: [
+      "Bedding",
+      "Duvet Covers",
+      "Pillowcases",
+      "Throws",
+      "Decorative Cushions",
+    ],
+  },
+  {
+    slug: "bathroom-spa",
+    title: "Bathroom & Spa",
+    description:
+      "Ultra-absorbent, quick-dry towels and spa essentials that bring a sense of everyday indulgence to your bathroom.",
+    image:
+      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&q=80",
+    products: ["Towels", "Bath Mats", "Bathrobes", "Spa Accessories"],
+  },
+  {
+    slug: "kitchenware",
+    title: "Kitchenware",
+    description:
+      "Artisan textiles and tableware for the discerning home chef — where practicality meets refined design.",
+    image:
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80",
+    products: [
+      "Tea Towels",
+      "Aprons",
+      "Oven Gloves",
+      "Table Linen",
+      "Cutlery",
+      "Crockery",
+    ],
+  },
+  {
+    slug: "lifestyle-leisure",
+    title: "Lifestyle & Leisure",
+    description:
+      "Sustainable comfort for every occasion — from sun-soaked beach days to relaxed weekends at home.",
+    image:
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80",
+    products: ["Beach Towels", "Tote Bags", "Loungewear", "Picnic Accessories"],
+  },
+  {
+    slug: "decor-accessories",
+    title: "Decor & Accessories",
+    description:
+      "Curated accents to elevate every room, layering texture, colour and character throughout your home.",
+    image:
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80",
+    products: [
+      "Cushions",
+      "Curtains",
+      "Wall Art",
+      "Decorative Accessories",
+    ],
   },
 ] as const;
 
@@ -222,6 +298,19 @@ export const SOCIAL_LINKS = {
     "https://www.facebook.com/profile.php?id=61578270008831",
   linkedin: "https://www.linkedin.com/company/lush-n-luxe/",
 } as const;
+
+// Simplified footer for Phase 1 — functional links only
+export const FOOTER_LINKS_PHASE_1 = [
+  {
+    title: "About",
+    links: [
+      { label: "Our Story", href: "/about" },
+      { label: "Sustainability", href: "/sustainability" },
+      { label: "Collections", href: "/collections" },
+      { label: "Contact Us", href: "/contact" },
+    ],
+  },
+] as const;
 
 // Footer link columns (updated from PDF)
 export const FOOTER_LINKS = [

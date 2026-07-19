@@ -6,7 +6,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS_FULL, NAV_LINKS_PHASE_1 } from "@/lib/constants";
+import { PHASE_1 } from "@/lib/config";
+
+const NAV_LINKS = PHASE_1 ? NAV_LINKS_PHASE_1 : NAV_LINKS_FULL;
+const CTA = PHASE_1
+  ? { label: "Enquire Now", href: "/contact" }
+  : { label: "Shop Now", href: "/#collections" };
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -63,10 +69,10 @@ export function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden lg:block">
           <Link
-            href="/#collections"
+            href={CTA.href}
             className="inline-flex items-center rounded-sm bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-md"
           >
-            Shop Now
+            {CTA.label}
           </Link>
         </div>
 
@@ -104,10 +110,10 @@ export function Navbar() {
                 </Link>
               ))}
               <Link
-                href="/#collections"
+                href={CTA.href}
                 className="mt-2 inline-flex items-center justify-center rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
               >
-                Shop Now
+                {CTA.label}
               </Link>
             </div>
           </motion.div>
